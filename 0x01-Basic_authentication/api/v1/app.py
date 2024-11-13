@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 API Route Module
-Configures the Flask API, establishes routing, error handling, and
-pre-request authentication based on environment settings.
+This module sets up the Flask API, defining routing, error handling,
+and pre-request authentication based on specified environment settings.
 """
 
 from os import getenv
@@ -29,12 +29,12 @@ elif AUTH_TYPE == "basic_auth":
 @app.before_request
 def bef_req():
     """
-    Pre-Request Authentication Filter
-    Executes before each request to verify authorization.
-    Routes listed in `excluded_paths` bypass this filter.
-    Actions:
-        - Aborts the request with a 401 error if the authorization header is missing.
-        - Aborts the request with a 403 error if the user is not authorized.
+    Pre-request Handler
+    Filters requests prior to route handling to verify authorization.
+    Excludes specific routes from authentication based on the route list.
+    Returns:
+        Aborts request with 401 if authorization header is missing.
+        Aborts request with 403 if user is unauthorized.
     """
     if auth is not None:
         excluded_paths = [
@@ -52,12 +52,12 @@ def bef_req():
 @app.errorhandler(404)
 def not_found(error) -> str:
     """
-    404 Not Found Error Handler
-    Provides a JSON response for routes that do not exist.
+    404 Error Handler
+    Returns a JSON response with an error message for routes not found.
     Args:
-        error: The error encountered.
+        error: The error triggered by the request.
     Returns:
-        JSON response containing error message and 404 status code.
+        JSON response with error message and 404 status.
     """
     return jsonify({"error": "Not found"}), 404
 
@@ -66,11 +66,11 @@ def not_found(error) -> str:
 def unauthorized(error) -> str:
     """
     401 Unauthorized Error Handler
-    Returns a JSON response when the user is not authorized.
+    Returns a JSON response indicating unauthorized access.
     Args:
-        error: The error encountered.
+        error: The error triggered by the request.
     Returns:
-        JSON response with an error message and a 401 status code.
+        JSON response with error message and 401 status.
     """
     return jsonify({"error": "Unauthorized"}), 401
 
@@ -79,11 +79,11 @@ def unauthorized(error) -> str:
 def forbidden(error) -> str:
     """
     403 Forbidden Error Handler
-    Returns a JSON response when access is forbidden.
+    Returns a JSON response indicating forbidden access.
     Args:
-        error: The error encountered.
+        error: The error triggered by the request.
     Returns:
-        JSON response with an error message and a 403 status code.
+        JSON response with error message and 403 status.
     """
     return jsonify({"error": "Forbidden"}), 403
 
