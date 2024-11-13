@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-""" Base module
+"""
+This is a Base module of user Authentication.
 """
 from datetime import datetime
 from typing import TypeVar, List, Iterable
@@ -13,11 +14,13 @@ DATA = {}
 
 
 class Base():
-    """ Base class
+    """
+    This is a base class Base class of basic authentication
     """
 
     def __init__(self, *args: list, **kwargs: dict):
-        """ Initialize a Base instance
+        """
+        This Initialize a Base instance of my basic authentication project.
         """
         s_class = str(self.__class__.__name__)
         if DATA.get(s_class) is None:
@@ -36,7 +39,8 @@ class Base():
             self.updated_at = datetime.utcnow()
 
     def __eq__(self, other: TypeVar('Base')) -> bool:
-        """ Equality
+        """
+        This is a Equality fucntion of my basic authentication module.
         """
         if type(self) != type(other):
             return False
@@ -45,7 +49,9 @@ class Base():
         return (self.id == other.id)
 
     def to_json(self, for_serialization: bool = False) -> dict:
-        """ Convert the object a JSON dictionary
+        """
+        This function Converts the object a JSON dictionary
+        in this basic authentication project
         """
         result = {}
         for key, value in self.__dict__.items():
@@ -59,7 +65,9 @@ class Base():
 
     @classmethod
     def load_from_file(cls):
-        """ Load all objects from file
+        """
+        This function loads all objects from file
+        in this basic authentication project
         """
         s_class = cls.__name__
         file_path = ".db_{}.json".format(s_class)
@@ -74,7 +82,8 @@ class Base():
 
     @classmethod
     def save_to_file(cls):
-        """ Save all objects to file
+        """
+        This function saves all objects to a file.
         """
         s_class = cls.__name__
         file_path = ".db_{}.json".format(s_class)
@@ -86,7 +95,8 @@ class Base():
             json.dump(objs_json, f)
 
     def save(self):
-        """ Save current object
+        """
+        This function Saves current object
         """
         s_class = self.__class__.__name__
         self.updated_at = datetime.utcnow()
@@ -94,7 +104,8 @@ class Base():
         self.__class__.save_to_file()
 
     def remove(self):
-        """ Remove object
+        """
+        This function Removes current object from the file
         """
         s_class = self.__class__.__name__
         if DATA[s_class].get(self.id) is not None:
@@ -103,27 +114,35 @@ class Base():
 
     @classmethod
     def count(cls) -> int:
-        """ Count all objects
+        """
+        This function Counts all objects
+        from the file
         """
         s_class = cls.__name__
         return len(DATA[s_class].keys())
 
     @classmethod
     def all(cls) -> Iterable[TypeVar('Base')]:
-        """ Return all objects
+        """
+        This function Return all objects
+        of the file
         """
         return cls.search()
 
     @classmethod
     def get(cls, id: str) -> TypeVar('Base'):
-        """ Return one object by ID
+        """
+        This function will Return one object by ID
+        for the file
         """
         s_class = cls.__name__
         return DATA[s_class].get(id)
 
     @classmethod
     def search(cls, attributes: dict = {}) -> List[TypeVar('Base')]:
-        """ Search all objects with matching attributes
+        """
+        This function Searches all objects with matching attributes
+        for the files
         """
         s_class = cls.__name__
         def _search(obj):

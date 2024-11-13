@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-""" User module
+"""
+This module is a User module.
+Basic authentication
 """
 import hashlib
 from models.base import Base
 
 
 class User(Base):
-    """ User class
+    """
+    This is a User class of basic authentication
     """
 
     def __init__(self, *args: list, **kwargs: dict):
@@ -20,13 +23,16 @@ class User(Base):
 
     @property
     def password(self) -> str:
-        """ Getter of the password
+        """
+        This is a Getter of the password of basic authentication.
         """
         return self._password
 
     @password.setter
     def password(self, pwd: str):
-        """ Setter of a new password: encrypt in SHA256
+        """
+        This is a Setter of a new password: encrypt in
+        SHA256 in basic authentication
         """
         if pwd is None or type(pwd) is not str:
             self._password = None
@@ -44,7 +50,9 @@ class User(Base):
         return hashlib.sha256(pwd_e).hexdigest().lower() == self.password
 
     def display_name(self) -> str:
-        """ Display User name based on email/first_name/last_name
+        """
+        Thi is a Display User name based on email/first_name/last_name
+        of basic authentication.
         """
         if self.email is None and self.first_name is None \
                 and self.last_name is None:
