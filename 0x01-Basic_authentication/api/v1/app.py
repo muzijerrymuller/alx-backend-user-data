@@ -28,7 +28,7 @@ def unauthorized(error) -> Tuple[str, Literal[401]]:
     """
     404 error handler
     """
-    return jsonify({"error": "unauthorized"}), 401
+    return jsonify({"error": "Unauthorized"}), 401
 
 
 if __name__ == "__main__":
