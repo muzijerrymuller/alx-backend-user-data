@@ -23,7 +23,7 @@ def not_found(error) -> str:
     return jsonify({"error": "Not found"}), 404
 
 
-@app.errorhandler(401)
+@app.errorhandler(403)
 def forbidden(error) -> Tuple[str, Literal[403]]:
     """
     404 error handler
