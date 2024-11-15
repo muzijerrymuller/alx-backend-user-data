@@ -24,7 +24,7 @@ elif AUTH_TYPE == "basic_auth":
 
 @app.before_request
 def bef_req():
-    """Filter each request before it reaches the appropriate route.""" 
+    """Filter each request before it reaches the appropriate route."""
     if auth is None:
         pass
     else:
