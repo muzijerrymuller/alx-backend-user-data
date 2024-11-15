@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""class Auth."""
+"""Class Auth."""
 from flask import request
 from typing import (
     List,
