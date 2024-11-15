@@ -9,8 +9,9 @@ from typing import (
 
 class Auth:
     """Manages the API authentication process."""
+
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """Determines whether a specific path requires authentication."""
+        """Determine whether a specific path requires authentication."""
         if path is None:
             return True
         elif excluded_paths is None or excluded_paths == []:
@@ -30,7 +31,7 @@ class Auth:
 
 
     def authorization_header(self, request=None) -> str:
-        """Retrieves the authorization header from the request object."""
+        """Retrieve the authorization header from the request object."""
         if request is None:
             return None
         header = request.headers.get('Authorization')
@@ -40,5 +41,5 @@ class Auth:
 
 
     def current_user(self, request=None) -> TypeVar('User'):
-        """Retrieves the current user based on the request object."""
+        """Retrieve the current user based on the request object."""
         return None

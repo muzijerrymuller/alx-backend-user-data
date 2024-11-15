@@ -9,9 +9,10 @@ from models.user import User
 
 class BasicAuth(Auth):
     """Implementation of the Basic Authorization method."""
+
     def extract_base64_authorization_header(self,
                                             authorization_header: str) -> str:
-        """Extraction of Base64."""
+        """Extract of Base64."""
         if authorization_header is None:
             return None
         if not isinstance(authorization_header, str):
@@ -24,7 +25,7 @@ class BasicAuth(Auth):
     def decode_base64_authorization_header(self,
                                            base64_authorization_header:
                                            str) -> str:
-        """This function will then Decodeis a Base64-encoded string."""
+        """function will then Decodeis a Base64-encoded string."""
         if base64_authorization_header is None:
             return None
         if not isinstance(base64_authorization_header, str):
@@ -39,7 +40,7 @@ class BasicAuth(Auth):
     def extract_user_credentials(self,
                                  decoded_base64_authorization_header:
                                  str) -> (str, str):
-        """returns the user's email and password decoded Base64 value."""
+        """return the user's email and password decoded Base64 value."""
         if decoded_base64_authorization_header is None:
             return (None, None)
         if not isinstance(decoded_base64_authorization_header, str):
