@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-API Routing module
-"""
+"""API Routing module."""
 from os import getenv
 from api.v1.views import app_views
 from flask import Flask, jsonify, abort, request
@@ -27,9 +25,7 @@ elif AUTH_TYPE == "basic_auth":
 
 @app.before_request
 def bef_req():
-    """
-    Filter each request before it reaches the appropriate route.
-    """
+    """Filter each request before it reaches the appropriate route."""
     if auth is None:
         pass
     else:
@@ -47,25 +43,19 @@ def bef_req():
 
 @app.errorhandler(404)
 def not_found(error) -> str:
-    """
-    404 error handler
-    """
+    """404 error handler."""
     return jsonify({"error": "Not found"}), 404
 
 
 @app.errorhandler(401)
 def unauthorized(error) -> str:
-    """
-    Handler for unauthorized requests
-    """
+    """Handler for unauthorized requests."""
     return jsonify({"error": "Unauthorized"}), 401
 
 
 @app.errorhandler(403)
 def forbidden(error) -> Tuple[str, Literal[403]]:
-    """
-    404 error handler
-    """
+    """404 error handler."""
     return jsonify({"error": "Forbidden"}), 403
 
 
