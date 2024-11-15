@@ -9,7 +9,6 @@ from typing_extensions import Literal
 from typing import Tuple
 
 
-
 app = Flask(__name__)
 app.register_blueprint(app_views)
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
@@ -26,6 +25,7 @@ elif AUTH_TYPE == "basic_auth":
 @app.before_request
 def bef_req():
     """Filter each request before it reaches the appropriate route."""
+    
     if auth is None:
         pass
     else:
