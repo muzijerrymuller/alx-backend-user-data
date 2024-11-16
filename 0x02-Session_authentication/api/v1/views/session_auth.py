@@ -45,8 +45,8 @@ class SessionAuth(Auth):
         Args:
         session_id (str): The session ID whose associated user ID is sought
         Returns:
-            str: The user ID associated with the session ID.
-            None: If session_id is invalid (None or not a string).
+         str: The user ID associated with the session ID.
+        None: If session_id is invalid (None or not a string).
         This method checks the `user_id_by_session_id` dictionary for the
         given session ID and returns the corresponding user ID if it exists.
         """
