@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """class Auth."""
+import os
 from flask import request
 from typing import (
     List,
