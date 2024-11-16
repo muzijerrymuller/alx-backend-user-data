@@ -9,7 +9,6 @@ from typing_extensions import Literal
 from typing import Tuple
 
 
-
 app = Flask(__name__)
 app.register_blueprint(app_views)
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
