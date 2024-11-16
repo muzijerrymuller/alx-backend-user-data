@@ -69,7 +69,8 @@ class SessionAuth(Auth):
         Args:
             request: The request object containing the session cookie.
         Returns:
-            bool: True if the session was successfully destroyed, False otherwise.
+            bool: True if the session was successfully
+            destroyed, False otherwise.
         """
         if request is None:
             return False
